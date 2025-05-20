@@ -10,7 +10,7 @@
 # 5. Создайте классы для сотрудников, например, `ZooKeeper`, `Veterinarian`, которые могут иметь специфические методы (например, `feed_animal()` для `ZooKeeper` и `heal_animal()` для `Veterinarian`).
 
 # Родительский класс животных
-class Animal():
+class Animal:
     def __init__(self, name, age, food):
         self.name = name
         self.age = age
@@ -48,3 +48,33 @@ class Reptile(Animal):
 
     def make_sound(self):
         print(f"{self.name} шипит: Ш-ш-ш-ш-ш!")
+
+# Полиморфизм
+def animal_sound(animals):
+    for animal in animals:
+        animal.make_sound()
+
+# Смотрители зоопарка
+class Zookeeper:
+    def __init__(self, name):
+        self.name = name
+
+    def feed_animal(self, animal):
+        print(f"Смотритель зоопарка {self.name} кормит {animal.name}")
+
+# Ветеринары
+class Veterinarian:
+    def __init__(self, name):
+        self.name = name
+
+    def heal_animal(self, animal):
+        print(f"Ветеринар {self.name} лечит {animal.name}")
+
+bird = Bird("Попугай Кеша", 5, "зерно", True)
+mammal = Mammal("Кошка Фифа", 12, "сухой корм", "hairless")
+reptile = Reptile("Крокодил Гена", 28, "рыбу", 2.5)
+
+zookeeper = Zookeeper("Вася")
+zookeeper.feed_animal(bird)
+veterinarian = Veterinarian("Петя")
+veterinarian.heal_animal(reptile)
