@@ -94,11 +94,29 @@ class Zoo:
         for employee in self.staff:
             print(f"{employee.name} ({employee.__class__.__name__})")
 
+# === Демонстрация работы ===
+
+# Создаем животных
 bird = Bird("Попугай Кеша", 5, "зерно", True)
 mammal = Mammal("Кошка Фифа", 12, "сухой корм", "hairless")
 reptile = Reptile("Крокодил Гена", 28, "рыбу", 2.5)
 
-zookeeper = Zookeeper("Вася")
-zookeeper.feed_animal(bird)
-veterinarian = Veterinarian("Петя")
-veterinarian.heal_animal(reptile)
+# Создаем сотрудников
+keeper = Zookeeper("Вася")
+vet = Veterinarian("Петя")
+
+# Создаем зоопарк и добавляем животных и сотрудников
+zoo = Zoo()
+zoo.add_animal(bird)
+zoo.add_animal(mammal)
+zoo.add_animal(reptile)
+zoo.add_staff(keeper)
+zoo.add_staff(vet)
+
+# Демонстрируем полиморфизм
+print("\nЗвуки животных:")
+animal_sound(zoo.animals)
+
+#Демонстрируем работу сотрудников
+keeper.feed_animal(bird)
+vet.heal_animal(reptile)
