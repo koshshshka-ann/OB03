@@ -70,6 +70,30 @@ class Veterinarian:
     def heal_animal(self, animal):
         print(f"Ветеринар {self.name} лечит {animal.name}")
 
+# Класс Zoo с композицией
+class Zoo:
+    def __init__(self):
+        self.animals = []
+        self.staff = []
+
+    def add_animal(self, animal):
+        self.animals.append(animal)
+        print(f"Животное {animal.name} добавлено в зоопарк")
+
+    def add_staff(self, employee):
+        self.staff.append(employee)
+        print(f"Сотрудник {employee.name} принят на работу")
+
+    def show_animals(self):
+        print("\nСписок животных в зоопарке:")
+        for animal in self.animals:
+            print(f"{animal.name} ({animal.__class__.__name__})")
+
+    def show_staff(self):
+        print("\nСписок сотрудников зоопарка:")
+        for employee in self.staff:
+            print(f"{employee.name} ({employee.__class__.__name__})")
+
 bird = Bird("Попугай Кеша", 5, "зерно", True)
 mammal = Mammal("Кошка Фифа", 12, "сухой корм", "hairless")
 reptile = Reptile("Крокодил Гена", 28, "рыбу", 2.5)
